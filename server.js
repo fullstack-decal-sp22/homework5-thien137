@@ -59,6 +59,11 @@ app.get("/favorite", async function (req, res) {
 
   app.post("/add", async function (req, res) {
     // POST "/add" adds an APOD image to our database
+    // I don't really understand what they want from me
+    // From the APOD Api I don't see how this server would
+    // let the user choose what image and how to rate it
+    // So, I'm just going to let the user add stuff and that's all
+    // const nasaResponse = await fetch(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`).json();
     const { title, url, rating } = req.body;
     try {
         let image = await APOD.findOne({
@@ -85,7 +90,6 @@ app.get("/favorite", async function (req, res) {
         console.log(err.message);
         res.status(500).send("Error in Saving");
     }
-    // const nasaResponse = await fetch(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`).json();
   });
   
   app.delete("/delete", async function (req, res) {
